@@ -10,11 +10,13 @@ namespace WinFormsIntro
     {
        public string Username;
        public string Password;
+       public int Money;
 
-       public Account(string username, string password)
+       public Account(string username, string password, int money)
         {
             Username = username;
             Password = password;
+            Money = money;
         }
     }
 
