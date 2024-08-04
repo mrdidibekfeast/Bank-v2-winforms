@@ -49,6 +49,7 @@ namespace WinFormsIntro
             ErrorTryAgainText.Visible = false;
             ErrorTryAgainText2.Visible = false;
             ErrorTryAgainText3.Visible = false;
+            TransferSuccessfullText.Visible = false;
         }
 
         public void resizeAray(int size)
@@ -272,54 +273,62 @@ namespace WinFormsIntro
 
         private void TransferAmountButton_Click(object sender, EventArgs e)
         {
-            bool validAccount1 = false;
-            bool validAccount2 = false;
-           
-            for (int i = 0; i < accounts.Length; i++)
+
+
+
+            Account firstAccountVerified = FindAccount(FirstAccountUsername.Text, FirstAccountPassword.Text);
+            Account secondAccountVerified = FindAccount(SecondAccountUsername.Text, SecondAccountPassword.Text);
+            //if (FirstAccountUsername.Text == accounts[i].Username && FirstAccountPassword.Text == accounts[i].Password)
+            //{
+            //    validAccount1 = true;
+            //    firstAccountVerified = FindAccount(FirstAccountUsername.Text, FirstAccountPassword.Text);
+            //}
+            //else
+            //{
+            //    validAccount1 = false;
+            //}
+
+
+            //if(SecondAccountUsername.Text == accounts[i].Username && SecondAccountPassword.Text == accounts[i].Password)
+            //{
+            //    validAccount2 = true;
+            //    secondAccountVerified = FindAccount(SecondAccountUsername.Text, SecondAccountPassword.Text);
+            //}
+            //else
+            //{
+            //    validAccount2 = false;
+            //}
+
+
+
+            string transferAmountMoney = TransferAmountBox.Text;
+            int transferAmountMoneyInt;
+            bool transferParse = int.TryParse(transferAmountMoney, out transferAmountMoneyInt);
+
+            if (firstAccountVerified != null && secondAccountVerified != null && transferParse && transferAmountMoneyInt > 0 && FirstAccountUsername.Text == currentAccount.Username)
             {
-                Account firstAccountVerified;
-                Account secondAccountVerified;
-                if (FirstAccountUsername.Text == accounts[i].Username && FirstAccountPassword.Text == accounts[i].Password)
-                {
-                    validAccount1 = true;
-                    firstAccountVerified = FindAccount(FirstAccountUsername.Text, FirstAccountPassword.Text);
-                }
-                else
-                {
-                    validAccount1 = false;
-                }
+                // use current Account variable to transfer to a random account , second account money going into to find that account set up a for loop like line 130
 
-
-                if(SecondAccountUsername.Text == accounts[i].Username && SecondAccountPassword.Text == accounts[i].Password)
-                {
-                    validAccount2 = true;
-                    secondAccountVerified = FindAccount(SecondAccountUsername.Text, SecondAccountPassword.Text);
-                }
-                else
-                {
-                    validAccount2 = false;
-                }
-
-
-
-                string transferAmountMoney = TransferAmountBox.Text;
-                int transferAmountMoneyInt;
-                bool transferParse = int.TryParse(transferAmountMoney, out transferAmountMoneyInt);
-
-                if (validAccount1 == true && validAccount2 == true && transferParse && transferAmountMoneyInt > 0)
-                {
-                    // use current Account variable to transfer to a random account , second account money going into to find that account set up a for loop like line 130
-
-                    secondAccountVerified.Money -= transferAmountMoneyInt;
-                }
-                else if (validAccount1 == false || validAccount2 == false || transferParse == false)
-                {
-                    currentLabel = ErrorTryAgainText3;
-                    ErrorTryAgainText3.Visible = true;
-                    timer1.Enabled = true;
-                }
+                firstAccountVerified.Money -= transferAmountMoneyInt;
+                secondAccountVerified.Money += transferAmountMoneyInt;
+                currentLabel = TransferSuccessfullText;
+                TransferSuccessfullText.Visible = true;
+                timer1.Enabled = true;
             }
-     
+            else if (firstAccountVerified == null && secondAccountVerified == null && transferParse == false && transferAmountMoneyInt < 0 && FirstAccountUsername.Text != currentAccount.Username)
+            {
+                currentLabel = ErrorTryAgainText3;
+                ErrorTryAgainText3.Visible = true;
+                timer1.Enabled = true;
+            }
+
+
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            LoggedInPanel.Visible = false;
+            StartPageLoginPanel.Visible = true;
         }
     }
 }

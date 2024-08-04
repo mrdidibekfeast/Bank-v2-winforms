@@ -86,6 +86,7 @@
             WithdrawAmountBox = new TextBox();
             EnterWithdrawAmountText = new Label();
             TransferPanel = new Panel();
+            toText = new Label();
             ErrorTryAgainText3 = new Label();
             ReturnToOptionsButton4 = new Button();
             TransferAmountButton = new Button();
@@ -101,7 +102,7 @@
             TransferExample = new Label();
             TransferExample2 = new Label();
             FirstAccountUsername = new TextBox();
-            toText = new Label();
+            LogoutButton = new Button();
             CreateAccountPanel.SuspendLayout();
             StartPageLoginPanel.SuspendLayout();
             LoggedInPanel.SuspendLayout();
@@ -200,7 +201,7 @@
             CreateAccountPanel.Controls.Add(AccountCreatedLabel);
             CreateAccountPanel.Controls.Add(CreateButton);
             CreateAccountPanel.Controls.Add(CreateUsername2);
-            CreateAccountPanel.Location = new Point(577, 46);
+            CreateAccountPanel.Location = new Point(456, 46);
             CreateAccountPanel.Name = "CreateAccountPanel";
             CreateAccountPanel.Size = new Size(415, 305);
             CreateAccountPanel.TabIndex = 23;
@@ -270,7 +271,7 @@
             StartPageLoginPanel.Controls.Add(UsernameText);
             StartPageLoginPanel.Controls.Add(PasswordText);
             StartPageLoginPanel.Controls.Add(UsernameBox);
-            StartPageLoginPanel.Location = new Point(121, 3);
+            StartPageLoginPanel.Location = new Point(35, 18);
             StartPageLoginPanel.Name = "StartPageLoginPanel";
             StartPageLoginPanel.Size = new Size(415, 303);
             StartPageLoginPanel.TabIndex = 26;
@@ -381,20 +382,21 @@
             // LoggedInPanel
             // 
             LoggedInPanel.BackColor = Color.Transparent;
+            LoggedInPanel.Controls.Add(LogoutButton);
             LoggedInPanel.Controls.Add(TransferButton);
             LoggedInPanel.Controls.Add(WithdrawButton);
             LoggedInPanel.Controls.Add(DepositButton);
             LoggedInPanel.Controls.Add(label7);
             LoggedInPanel.Controls.Add(CheckBalanceButton);
             LoggedInPanel.Controls.Add(LoggedIn);
-            LoggedInPanel.Location = new Point(105, 357);
+            LoggedInPanel.Location = new Point(24, 327);
             LoggedInPanel.Name = "LoggedInPanel";
             LoggedInPanel.Size = new Size(415, 306);
             LoggedInPanel.TabIndex = 27;
             // 
             // TransferButton
             // 
-            TransferButton.Location = new Point(294, 176);
+            TransferButton.Location = new Point(257, 176);
             TransferButton.Name = "TransferButton";
             TransferButton.Size = new Size(75, 23);
             TransferButton.TabIndex = 38;
@@ -404,7 +406,7 @@
             // 
             // WithdrawButton
             // 
-            WithdrawButton.Location = new Point(213, 176);
+            WithdrawButton.Location = new Point(179, 176);
             WithdrawButton.Name = "WithdrawButton";
             WithdrawButton.Size = new Size(75, 23);
             WithdrawButton.TabIndex = 37;
@@ -414,7 +416,7 @@
             // 
             // DepositButton
             // 
-            DepositButton.Location = new Point(132, 176);
+            DepositButton.Location = new Point(103, 176);
             DepositButton.Name = "DepositButton";
             DepositButton.Size = new Size(75, 23);
             DepositButton.TabIndex = 36;
@@ -435,7 +437,7 @@
             // 
             // CheckBalanceButton
             // 
-            CheckBalanceButton.Location = new Point(26, 176);
+            CheckBalanceButton.Location = new Point(2, 176);
             CheckBalanceButton.Name = "CheckBalanceButton";
             CheckBalanceButton.Size = new Size(100, 23);
             CheckBalanceButton.TabIndex = 34;
@@ -461,7 +463,7 @@
             CheckBalancePanel.Controls.Add(DollarsText);
             CheckBalancePanel.Controls.Add(CurrentBalanceNumberText);
             CheckBalancePanel.Controls.Add(CurrentBalanceText);
-            CheckBalancePanel.Location = new Point(536, 429);
+            CheckBalancePanel.Location = new Point(445, 383);
             CheckBalancePanel.Name = "CheckBalancePanel";
             CheckBalancePanel.Size = new Size(415, 305);
             CheckBalancePanel.TabIndex = 39;
@@ -515,7 +517,7 @@
             DepositPanel.Controls.Add(ReturnToOptionsButton2);
             DepositPanel.Controls.Add(DepositAmountBox);
             DepositPanel.Controls.Add(EnterDepositAmountText);
-            DepositPanel.Location = new Point(1008, 46);
+            DepositPanel.Location = new Point(877, 46);
             DepositPanel.Name = "DepositPanel";
             DepositPanel.Size = new Size(415, 305);
             DepositPanel.TabIndex = 40;
@@ -583,7 +585,7 @@
             WithdrawPanel.Controls.Add(WithdrawAmountButton);
             WithdrawPanel.Controls.Add(WithdrawAmountBox);
             WithdrawPanel.Controls.Add(EnterWithdrawAmountText);
-            WithdrawPanel.Location = new Point(968, 454);
+            WithdrawPanel.Location = new Point(866, 388);
             WithdrawPanel.Name = "WithdrawPanel";
             WithdrawPanel.Size = new Size(415, 305);
             WithdrawPanel.TabIndex = 41;
@@ -661,10 +663,19 @@
             TransferPanel.Controls.Add(TransferExample);
             TransferPanel.Controls.Add(TransferExample2);
             TransferPanel.Controls.Add(FirstAccountUsername);
-            TransferPanel.Location = new Point(1408, 388);
+            TransferPanel.Location = new Point(1298, 388);
             TransferPanel.Name = "TransferPanel";
             TransferPanel.Size = new Size(415, 305);
             TransferPanel.TabIndex = 42;
+            // 
+            // toText
+            // 
+            toText.AutoSize = true;
+            toText.Location = new Point(190, 81);
+            toText.Name = "toText";
+            toText.Size = new Size(18, 15);
+            toText.TabIndex = 45;
+            toText.Text = "to";
             // 
             // ErrorTryAgainText3
             // 
@@ -792,14 +803,15 @@
             FirstAccountUsername.Size = new Size(100, 23);
             FirstAccountUsername.TabIndex = 38;
             // 
-            // toText
+            // LogoutButton
             // 
-            toText.AutoSize = true;
-            toText.Location = new Point(190, 81);
-            toText.Name = "toText";
-            toText.Size = new Size(18, 15);
-            toText.TabIndex = 45;
-            toText.Text = "to";
+            LogoutButton.Location = new Point(334, 176);
+            LogoutButton.Name = "LogoutButton";
+            LogoutButton.Size = new Size(75, 23);
+            LogoutButton.TabIndex = 39;
+            LogoutButton.Text = "Log Out";
+            LogoutButton.UseVisualStyleBackColor = true;
+            LogoutButton.Click += LogoutButton_Click;
             // 
             // Form1
             // 
@@ -913,5 +925,6 @@
         private Button TransferAmountButton;
         private Label ErrorTryAgainText3;
         private Label toText;
+        private Button LogoutButton;
     }
 }
